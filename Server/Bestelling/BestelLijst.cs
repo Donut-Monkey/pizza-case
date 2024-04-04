@@ -16,6 +16,7 @@ namespace Server.Bestelling
         {
             for (int i = 0; i < _orders.Count; i++)
             {
+                //bestelling 0 is eerste bestelling
                 int j = i + 1;
                 Console.WriteLine("Bestelling " + j + ": ");
                 _orders[i].Print();

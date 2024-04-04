@@ -18,6 +18,7 @@ namespace Client.Netwerk
         private readonly int _poort = 8080;
         private SecureChannel _channel;
 
+        //tcp of udp socket
         private ClientSocket(bool IsTCP)
         {
             _channel = new SecureChannel();
@@ -49,14 +50,6 @@ namespace Client.Netwerk
             List<string> data = decrypted.Split(";").ToList();
             data.RemoveAt(data.Count - 1);
             return data;
-
-           // return decrypted;
-
-            //return new List<string>();
-            //byte[] incomingData = _client.Receive();
-            //List<string> data = _channel.Decrypt(incomingData).Split(';').ToList();
-            //data.RemoveAt(data.Count - 1);
-            //return data;
         }
     }
 }

@@ -12,7 +12,6 @@ namespace Server.Netwerk
         private TcpClient tcpClient = null;
         private TcpListener listener = null;
         private NetworkStream stream = null;
-        string data = null;
 
         public TCPServer(string adres, int poort)
         {

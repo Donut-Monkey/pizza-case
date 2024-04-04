@@ -15,6 +15,7 @@ namespace Server
         private BestelLijst _orders;
         public Server()
         {
+            //switch tcp/udp door instance op true/false
             _socket = ServerSocket.GetInstance(true);
             _orders = new BestelLijst();
         }

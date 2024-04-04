@@ -9,6 +9,5 @@ namespace Server.Bestelling
     {
         void Print();
         void AcceptBestellingVisitor(BestellingVisitor Visitor);
-
     }
 }

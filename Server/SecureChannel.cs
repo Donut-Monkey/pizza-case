@@ -6,6 +6,7 @@ using System.Text;
 
 namespace Server
 {
+    //de verstuurde data wordt encrypt en decrypt aan de hand van een key en IV waarde
     public class SecureChannel
     {
         private AesManaged _aes;

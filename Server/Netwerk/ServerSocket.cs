@@ -28,7 +28,6 @@ namespace Server.Netwerk
 
 		//singleton pattern
 		//altijd maar 1 instantie van
-		//Singleton is a creational design pattern, which ensures that only one object of its kind exists and provides a single point of access to it for any other code.
 		public static ServerSocket GetInstance(bool IsTCP)
 		{
 			if (_instance == null)
@@ -42,7 +41,6 @@ namespace Server.Netwerk
         {
             // Encrypt string en send
             byte[] encrypted = _channel.Encrypt(Message + ";");
-            //byte[] encrypted = _channel.Encrypt(Message);
             _listener.Send(encrypted);
         }
         public List<string> Receive()

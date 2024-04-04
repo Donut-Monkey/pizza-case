@@ -19,54 +19,37 @@ namespace Server.Bestelling
         public string Naam { get; set; }
         public string Adres { get; set; }
         public string Woonplaats { get; set; }
-        public string[] Pizza { get; set; }
+        public Pizza[] Pizzas { get; set; }
         public int Aantal { get; set; }
         public int Toppings { get; set; }
-        public string[] ToppingBescrhijving { get; set; }
         public DateTime Bestelmoment { get; set; }
 
-        public BestelFormat() { }
-
-        public BestelFormat(string naam, string adres, string woonplaats, string[] pizza, int aantal, int toppings, string[] toppingBescrhijving, DateTime bestelmoment)
-        {
-            Naam = naam;
-            Adres = adres;
-            Woonplaats = woonplaats;
-            Pizza = pizza;
-            Aantal = aantal;
-            Toppings = toppings;
-            ToppingBescrhijving = toppingBescrhijving;
-            Bestelmoment = bestelmoment;
-        }
-
+        //print bestelling in de console
         public void Print()
         {
             Console.Write
                 (
-                Naam + "\n" +
-                Adres + "\n" +
-                Woonplaats + "\n"
+                "Naam: " + Naam + "\n" +
+                "Adres: " + Adres + "\n" +
+                "Woonplaats: " + Woonplaats + "\n"
                 );
 
-            foreach (string pizza in Pizza)
+            foreach (Pizza pizza in Pizzas)
             {
-                Console.WriteLine(pizza);  
-            }
-            foreach (string topping in ToppingBescrhijving)
-            {
-                Console.WriteLine(topping);
-            }
+                Console.WriteLine("Pizza: " + pizza.Naam);
+                if (pizza.Toppings != null && pizza.Toppings.Length > 0)
+                    foreach (string topping in pizza.Toppings)
+                    {
+                        Console.WriteLine("Topping: " + topping);
+                    }
+            } 
             Console.Write
                 (
-                Aantal + "\n" +
-                Toppings + "\n"
+                "Aantal Pizza's: " + Aantal + "\n" +
+                "Toppings: " + Toppings + "\n"
                 );
-
-            Console.WriteLine(Bestelmoment);
-            //print de extra toppings nu onderaan ipv na elke pizza
+            Console.WriteLine(Bestelmoment + "\n");
         }
-
-        //belangrijk zodat compiler weet deze class bezocht wordt
         void Bestelling.AcceptBestellingVisitor(BestellingVisitor Visitor)
         {
             Visitor.VisitBestelFormat(this);
