@@ -1,31 +1,29 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Net;
 using System.Net.Sockets;
+using System.Net;
 using System.Text;
 
-namespace Server.Netwerk
+namespace Client.Netwerk
 {
-    class UDPServer : Listener
+    public class UDPClient : Listener
     {
         private UTF8Encoding utf8 = new UTF8Encoding();
         private UdpClient udpClient;
         private IPEndPoint groupEp;
         private Socket socket;
 
-        public UDPServer(string adres, int poort)
+        public UDPClient(string adres, int poort)
         {
             utf8 = new UTF8Encoding();
-            udpClient = new UdpClient(poort);
-            groupEp = new IPEndPoint(IPAddress.Any, poort);
+            udpClient = new UdpClient(8081);
+            groupEp = new IPEndPoint(IPAddress.Parse(adres), poort);
             socket = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp);
         }
-        //verstuur data
         public void Send(byte[] Data)
         {
             socket.SendTo(Data, groupEp);
         }
-        //ontvang data
         public byte[] Receive()
         {
             byte[] data = null;
@@ -41,4 +39,3 @@ namespace Server.Netwerk
         }
     }
 }
-

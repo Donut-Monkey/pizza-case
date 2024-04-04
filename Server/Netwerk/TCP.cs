@@ -14,15 +14,22 @@ namespace Server.Netwerk
         private NetworkStream stream = null;
         string data = null;
 
-        public TCPServer(string adress, int port)
+        public TCPServer(string adres, int poort)
         {
-            listener = new TcpListener(IPAddress.Parse(adress), port);
+            listener = new TcpListener(IPAddress.Parse(adres), poort);
             listener.Start();
         }
-
+        //verstuur data
+        public void Send(byte[] Data)
+        {
+            if (stream != null)
+            {
+                stream.Write(Data, 0, Data.Length);
+            }
+        }
+        //ontvang data
         public byte[] Receive()
         {
-            //byte[] data = new byte[];
             byte[] bytes = new byte[256];
             try
             {
@@ -40,15 +47,6 @@ namespace Server.Netwerk
             }
             return bytes;
         }
-
-        public void Send(byte[] Data)
-        {
-            if (stream != null)
-            {
-                stream.Write(Data, 0, Data.Length);
-            }
-        }
-
     }
 }
 
