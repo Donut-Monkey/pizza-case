@@ -5,9 +5,9 @@ using System.Text;
 
 namespace Server.Bestelling
 {
-    public interface Bestelling
+    public interface IBestelling
     {
         void Print();
-        void AcceptBestellingVisitor(BestellingVisitor Visitor);
+        void AcceptBestellingVisitor(IBestellingVisitor Visitor);
     }
 }

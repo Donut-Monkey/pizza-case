@@ -14,7 +14,7 @@ namespace Server.Bestelling
     - beschrijving topping
     date/time bestelling
     */
-    public class BestelFormat : Bestelling
+    public class BestelFormat : IBestelling
     {
         public string Naam { get; set; }
         public string Adres { get; set; }
@@ -50,7 +50,7 @@ namespace Server.Bestelling
                 );
             Console.WriteLine(Bestelmoment + "\n");
         }
-        void Bestelling.AcceptBestellingVisitor(BestellingVisitor Visitor)
+        void IBestelling.AcceptBestellingVisitor(IBestellingVisitor Visitor)
         {
             Visitor.VisitBestelFormat(this);
         }

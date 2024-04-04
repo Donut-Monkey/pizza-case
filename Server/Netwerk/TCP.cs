@@ -6,7 +6,7 @@ using System.Net;
 
 namespace Server.Netwerk
 {
-    class TCPServer : Listener
+    class TCPServer : IListener
     {
         private UTF8Encoding utf8 = new UTF8Encoding();
         private TcpClient tcpClient = null;

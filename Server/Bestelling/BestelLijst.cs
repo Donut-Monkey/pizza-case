@@ -5,29 +5,29 @@ using System.Text;
 
 namespace Server.Bestelling
 {
-    public class BestelLijst : Bestelling
+    public class BestelLijst : IBestelling
     {
-        private readonly List<BestelFormat> _orders;
+        private readonly List<BestelFormat> _bestellingen;
         public BestelLijst()
         {
-            _orders = new List<BestelFormat>();
+            _bestellingen = new List<BestelFormat>();
         }
         public void Print()
         {
-            for (int i = 0; i < _orders.Count; i++)
+            for (int i = 0; i < _bestellingen.Count; i++)
             {
                 //bestelling 0 is eerste bestelling
                 int j = i + 1;
                 Console.WriteLine("Bestelling " + j + ": ");
-                _orders[i].Print();
+                _bestellingen[i].Print();
             }
         }
         public void Add(BestelFormat Bestelling)
         {
-            _orders.Add(Bestelling);
+            _bestellingen.Add(Bestelling);
         }
 
-        public void AcceptBestellingVisitor(BestellingVisitor Visitor)
+        public void AcceptBestellingVisitor(IBestellingVisitor Visitor)
         {
             Visitor.VisitBestelLijst(this);
         }

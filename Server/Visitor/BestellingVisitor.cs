@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Server.Visitor
 {
-    public interface BestellingVisitor
+    public interface IBestellingVisitor
     {
         void VisitBestelFormat(BestelFormat BestelFormat);
 

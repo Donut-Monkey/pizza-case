@@ -11,7 +11,7 @@ namespace Server.Netwerk
 	{
 		protected static ServerSocket _instance = null;
 
-		private Listener _listener;
+		private IListener _listener;
 		private readonly string _localAdres = "127.0.0.1";
 		private readonly int _poort = 8080;
 		private SecureChannel _channel;

@@ -12,12 +12,12 @@ namespace Server
     class Server
     {
         private ServerSocket _socket;
-        private BestelLijst _orders;
+        private BestelLijst _bestellingen;
         public Server()
         {
             //switch tcp/udp door instance op true/false
             _socket = ServerSocket.GetInstance(true);
-            _orders = new BestelLijst();
+            _bestellingen = new BestelLijst();
         }
         public void Start()
         {
@@ -30,11 +30,11 @@ namespace Server
                 BestelFormat incomingOrder = JsonSerializer.Deserialize<BestelFormat>(request[1]);
                 if (Auth.Authorize(request[0]) == true)
                 {
-                    _orders.Add(incomingOrder);
+                    _bestellingen.Add(incomingOrder);
                 }
                 Console.Clear();
                 Console.WriteLine("Bestellingen:");
-                _orders.Print();
+                _bestellingen.Print();
             }
         }
     }
