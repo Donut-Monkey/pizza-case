@@ -6,7 +6,7 @@ using System.Text;
 
 namespace Client.Netwerk
 {
-    public class UDPClient : Listener
+    public class UDPClient : IListener
     {
         private UTF8Encoding utf8 = new UTF8Encoding();
         private UdpClient udpClient;

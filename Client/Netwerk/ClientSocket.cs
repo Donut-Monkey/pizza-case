@@ -13,7 +13,7 @@ namespace Client.Netwerk
     {
         protected static ClientSocket _instance = null;
 
-        private Listener _client;
+        private IListener _client;
         private readonly string _RemoteAdres = "127.0.0.1";
         private readonly int _poort = 8080;
         private SecureChannel _channel;

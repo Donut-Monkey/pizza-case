@@ -5,15 +5,6 @@ using System.Text;
 
 namespace Server.Bestelling
 {
-    /*
-    Naam, Adres en Woonplaats van klant
-    Per pizza:
-    - naam
-    - aantal
-    - extra topping (>=0)
-    - beschrijving topping
-    date/time bestelling
-    */
     public class BestelFormat : IBestelling
     {
         public string Naam { get; set; }

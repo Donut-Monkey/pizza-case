@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Client.Netwerk
 {
-    interface Listener
+    interface IListener
     {
         void Send(byte[] Data);
         byte[] Receive();

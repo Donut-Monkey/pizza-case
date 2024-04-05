@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Client.Netwerk
 {
-    public class TCPClient : Listener
+    public class TCPClient : IListener
     {
         private UTF8Encoding utf8 = new UTF8Encoding();
         private TcpClient tcpClient = null;
