@@ -29,7 +29,13 @@ namespace Server.Bestelling
 
         public void AcceptBestellingVisitor(IBestellingVisitor Visitor)
         {
-            Visitor.VisitBestelLijst(this);
+            //Visitor.VisitBestelLijst(this);
+            Console.WriteLine("AcceptBestellingVisitor aangeroepen in BestelLijst");
+            foreach (var bestelling in _bestellingen)
+            {
+                bestelling.AcceptBestellingVisitor(Visitor);
+            }
         }
+
     }
 }

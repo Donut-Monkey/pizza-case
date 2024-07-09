@@ -1,8 +1,10 @@
 ﻿using Client.Bestelling;
 using Client.Netwerk;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Net;
 using System.Security.Cryptography;
 using System.Text;
@@ -62,11 +64,49 @@ namespace Client
                 DateTime bestelmoment = DateTime.Now;
 
                 //stuur bestelling
-                BestelFormat bestelling = new BestelFormat(naam, adres, woonplaats, pizzas.ToArray(), aantal, toppings, bestelmoment);
-                string jsonString = JsonSerializer.Serialize(bestelling);
-                Console.WriteLine("Je bestelling wordt verzonden...\n");    
-                socket.Send(wachtwoord + ";" + jsonString);
+                //BestelFormat bestelling = new BestelFormat(naam, adres, woonplaats, pizzas.ToArray(), aantal, toppings, bestelmoment);
+                //string jsonString = JsonSerializer.Serialize(bestelling);
+                //Console.WriteLine("Je bestelling wordt verzonden...\n");    
+                //socket.Send(wachtwoord + ";" + jsonString);
+
+                //BestelFormat bestelling = new BestelFormat(naam, adres, woonplaats, pizzas.ToArray(), aantal, toppings, bestelmoment);
+                //string plainpizza = ""; //= string.Join(",", pizzas[0]);
+                //int count = 0;
+                //foreach (Pizza item in pizzas)
+                //{
+                //    plainpizza += string.Join(",", item.Naam + "," + item.Toppings[count].ToString() + ",");
+                //    //count++;
+                //}
+                //string plaintopping = string.Join(",", toppings);
+                //string plainTextData = $"{naam};{adres};{woonplaats};{plainpizza};{aantal};{plaintopping};{bestelmoment}";
+                //Console.WriteLine("Je bestelling wordt verzonden...\n");
+                //socket.Send(wachtwoord + ";" + plainTextData);
                 //P1c4G0bR
+
+                // Maak bestelformat aan
+                BestelFormat bestelling = new BestelFormat(naam, adres, woonplaats, pizzas.ToArray(), aantal, toppings, bestelmoment);
+
+                // Bouw de string voor de pizzas inclusief toppings
+                StringBuilder pizzaBuilder = new StringBuilder();
+                foreach (Pizza item in pizzas)
+                {
+                    pizzaBuilder.AppendLine($"{item.Naam}\n{aantal /* hmm */}\n{item.Toppings.Length}");
+                    for (int i = 0; i < item.Toppings.Length; i++)
+                    {
+                        //extra toppings toevoegen
+                        pizzaBuilder.Append($"{item.Toppings[i]}\n");
+                    }
+                }
+
+                pizzaBuilder.Remove(pizzaBuilder.Length - 1, 1); // Verwijder de laatste komma
+
+                // Combineer alles in de eindstring
+                //string plainTextData = $"{naam}{adres}{woonplaats}{pizzaBuilder.ToString()}{aantal}{toppings}{bestelmoment}"; Console.WriteLine("Je bestelling wordt verzonden...\n");
+                string plainTextData = $"{naam}\n{adres}\n{woonplaats}\n{pizzaBuilder}\n{bestelmoment}"; 
+                Console.WriteLine("Je bestelling wordt verzonden...\n");
+                socket.Send(wachtwoord + ";" + plainTextData);
+                //P1c4G0bR
+
             }
         }
     }

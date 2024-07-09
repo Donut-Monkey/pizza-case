@@ -5,4 +5,12 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Compile Remove="Menu\IMenuItem.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Menu\IMenuItem.cs" />
+  </ItemGroup>
+
 </Project>

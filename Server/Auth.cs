@@ -7,9 +7,16 @@ namespace Server
     class Auth
     {
         //simpele beveiliging van server
+        //public static bool Authorize(string Key)
+        //{
+        //    if (Key == "P1c4G0bR")
+        //        return true;
+        //    else
+        //        return false;
+        //}
         public static bool Authorize(string Key)
         {
-            if (Key == "P1c4G0bR")
+            if (Key == "wachtwoord")
                 return true;
             else
                 return false;
